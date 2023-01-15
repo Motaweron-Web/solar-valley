@@ -1,0 +1,121 @@
+<form id="addForm" class="addForm" method="POST" action="{{ route('product.store') }}" >
+    @csrf
+        <div class="row">
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label class="control-label">Title_Ar</label>
+                    <input type="text"  name="title_ar" class="form-control" id="exampleFormControlInput1">
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label class="control-label">Sub Ar</label>
+                    <input type="text"  name="sub_title_ar" class="form-control" id="exampleFormControlInput1">
+                </div>
+            </div>
+
+
+            {{-- <div class="col-md-4">
+                <div class="form-group">
+                    <label class="control-label">Sku</label>
+                    <input type="text"  name="sku" class="form-control" id="exampleFormControlInput1">
+                </div>
+            </div> --}}
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label class="control-label">Title En</label>
+                    <input type="text"  name="title_en" class="form-control" id="exampleFormControlInput1">
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label class="control-label">Sub En</label>
+                    <input type="text"  name="sub_title_en" class="form-control" id="exampleFormControlInput1">
+                </div>
+            </div>
+
+
+
+
+
+
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label class="control-label">Category</label>
+                        <select name="category_id" id="" class="form-control">
+                            @foreach ($categoreis as $category)
+                            <option value="{{ $category->id }}">{{ $category->title_ar }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                </div>
+
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label class="control-label">Tag</label>
+                    <input type="text"  name="tags" class="form-control" id="exampleFormControlInput1">
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label class="control-label">Part Number</label>
+                    <input type="number"  name="part_number" class="form-control" id="exampleFormControlInput1">
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label class="control-label">Weight</label>
+                    <input type="number"  name="weight" class="form-control" id="exampleFormControlInput1">
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label class="control-label">Dimensions</label>
+                    <input type="number"  name="dimensions" class="form-control" id="exampleFormControlInput1">
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label class="control-label">Model Number</label>
+                    <input type="number"  name="model_number" class="form-control" id="exampleFormControlInput1">
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label class="control-label">Image</label>
+                    <input type="file"  name="image" class="form-control" id="exampleFormControlInput1">
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label class="control-label">Description Ar</label>
+                    <textarea name="desc_ar" class="form-control" id="" cols="30" rows="10"></textarea>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label class="control-label">Description En</label>
+                    <textarea name="desc_en" class="form-control" id="" cols="30" rows="10"></textarea>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn bg-gradient-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="submit" class="btn bg-gradient-primary" id="addButton">create</button>
+        </div>
+    </form>
+

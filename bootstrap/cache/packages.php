@@ -10,6 +10,13 @@
       'WebSocketRouter' => 'BeyondCode\\LaravelWebSockets\\Facades\\WebSocketRouter',
     ),
   ),
+  'binary-cats/laravel-sku' => 
+  array (
+    'providers' => 
+    array (
+      0 => 'BinaryCats\\Sku\\SkuServiceProvider',
+    ),
+  ),
   'buglinjo/laravel-webp' => 
   array (
     'providers' => 

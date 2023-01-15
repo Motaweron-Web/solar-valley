@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class StoreService extends FormRequest
+class StoreCategory extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,10 +24,8 @@ class StoreService extends FormRequest
     public function rules()
     {
         return [
-            'title_ar'      => 'required|max:255',
-            'title_en'      => 'required|max:255',
-            'desc_ar'       => 'required',
-            'desc_en'       => 'required',
+            'title_ar' => 'required',
+            'title_en' => 'required'
         ];
     }
 
@@ -36,8 +34,7 @@ class StoreService extends FormRequest
         return [
             'title_ar.required'          => 'يجب ادخال العنوان باللغة العربية',
             'title_en.required'          => 'يجب ادخال العنوان باللغة الانجليزية',
-            'desc_ar.required'           => 'يجب ادخال وصف باللغة العربية',
-            'desc_en.required'           => 'يجب ادخال وصف باللغة الانجليزية',
+
         ];
 
     }

@@ -3,9 +3,8 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Validation\Rule;
 
-class StoreAbout extends FormRequest
+class StoreProduct extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,16 +23,21 @@ class StoreAbout extends FormRequest
      */
     public function rules()
     {
-
         return [
+            'image' => 'required|image',
             'title_ar' => 'required',
             'title_en' => 'required',
             'sub_title_ar' => 'required',
             'sub_title_en' => 'required',
-            'hash_ar' => 'required',
-            'hash_en' => 'required',
+            // 'sku' => 'required',
+            'category_id' => 'required',
+            'tags' => 'required',
             'desc_ar' => 'required',
             'desc_en' => 'required',
+            'part_number' => 'required',
+            'weight' => 'required',
+            'dimensions' => 'required',
+            'model_number' => 'required'
         ];
     }
 }

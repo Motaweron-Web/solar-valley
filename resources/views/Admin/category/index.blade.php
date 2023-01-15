@@ -11,7 +11,7 @@
             <div class="card" style="padding: 13px">
                 <!-- Card header -->
                 <div class="card-header">
-                    <h5 class="mb-0">Admins List</h5>
+                    <h5 class="mb-0">Category List</h5>
                     <div class="add-btn">
 
                         <button type="button" class="btn btn-primary addBtn">Add</button>
@@ -22,20 +22,19 @@
                         <thead class="thead-light">
                         <tr>
                             <th>ID</th>
-                            <th>Name</th>
-                            <th>Email</th>
+                            <th>Title</th>
                             <th>Action</th>
                         </tr>
                         </thead>
                     </table>
                 </div>
             </div>
-            <!--   create modal   -->
+            <!--   edit and create modal   -->
             <div class="modal fade" id="editOrCreate" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Add Admin</h5>
+                            <h5 class="modal-title" id="exampleModalLabel">Add Category</h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
@@ -46,7 +45,7 @@
                     </div>
                 </div>
             </div>
-            <!--   end create modal   -->
+            <!--   edit and create modal   -->
             <!--  delete Modal -->
             <div class="modal fade" id="delete_modal"  tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered" role="document">
@@ -80,19 +79,18 @@
 
         var columns = [
             {data: 'id', name: 'id'},
-            {data: 'name', name: 'name'},
-            {data: 'email', name: 'email'},
+            {data: 'title_en', name: 'title_en'},
             {data: 'action', name: 'action', orderable: false, searchable: false},
         ]
-        showData('{{route('admins.index')}}', columns);
+        showData('{{route('category.index')}}', columns);
     //    add Model
-        showAddModal('{{route('admins.create')}}');
+        showAddModal('{{route('category.create')}}');
         addScript();
         // deleteModel
-        deleteScript('{{route('delete_admin')}}');
+        deleteScript('{{route('category.destroy',':id')}}');
 
 
-        showEditModal('{{route('admins.edit',':id')}}');
+        showEditModal('{{route('category.edit',':id')}}');
         editScript();
     </script>
 @stop

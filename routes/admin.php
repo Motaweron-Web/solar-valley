@@ -15,9 +15,27 @@ Route::group(['prefix'=>'admin','middleware'=>'auth:admin'],function (){
     Route::post('/delete_admin','AdminController@delete')->name('delete_admin');
     Route::post('/admins_update','AdminController@update')->name('admins_update');
 
+    #### Category ####
+    Route::resource('/category', 'CategoryController');
+
+    #### Service ####
+    Route::resource('/service', 'ServiceController');
+
+    #### About Us ####
+    Route::resource('/about_us', 'AboutUsController')->except('create','store', 'edit', 'destroy');
+
+    #### Contact ####
+    Route::resource('/contact', 'ContactController');
+
+    #### Product ####
+    Route::resource('/product', 'ProductController');
+
+
 
 #### Auth ####
 Route::get('logout', 'AuthController@logout')->name('admin.logout');
+
+
 
 });
 
