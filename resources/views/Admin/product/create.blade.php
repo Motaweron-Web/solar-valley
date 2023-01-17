@@ -1,13 +1,20 @@
 <link rel="stylesheet" href="{{ asset('assets/admin/assets/css/jquery.tagsinput.css') }}">
-
 <script src="{{ asset('assets/admin/assets/js/jquery.tagsinput.js') }}"></script>
 
-<script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
+{{--<script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>--}}
 
+<style>
+    .taggs {
+        width: 240px !important;
+        min-height: 60px !important;
+        height: 60px !important;
+    }
+</style>
 <form id="addForm" class="addForm" method="POST" action="{{ route('product.store') }}" enctype="multipart/form-data" >
     @csrf
+
     @foreach ($products as $product)
-        <input type="hidden" name="id" value="{{ $product->id }}">
+        <input type="hidden" name="id" value="{{ $product->id ?? '' }}">
     @endforeach
         <div class="row">
             <div class="col-md-4">
@@ -56,9 +63,9 @@
                     <div class="form-group">
                         <label class="control-label">Category</label>
                         <select name="category_id" id="" class="form-control">
-                            <option value="" hidde selected>{{ $product->category->id }}</option>
+                            <option class="form-control" value="" hidde selected>{{ @$product->category->id }}</option>
                             @foreach ($categoreis as $category)
-                            <option value="{{ $category->id }}">{{ $category->title_ar }}</option>
+                            <option class="form-control" value="{{ $category->id }}">{{ $category->title_ar }}</option>
                             @endforeach
                         </select>
                     </div>
@@ -69,7 +76,7 @@
             <div class="col-md-4">
                 <div class="form-group">
                     <label class="control-label">Tag</label>
-                    <input type="text"  name="tags[]" data-role="taginput" id="tags_input" class="form-control">
+                    <input type="text"  name="tags[]" data-role="tagsinput" id="tags_input" class="form-control">
                 </div>
             </div>
 
@@ -132,5 +139,6 @@
     <script>
         $('#tags_input').tagsInput({
         });
+        $('#tags_input_tagsinput').addClass('form-control taggs');
     </script>
 

@@ -127,10 +127,10 @@
                         ' ></span> <span style="margin-left: 4px;">انتظر ..</span>').attr('disabled', true);
                 },
                 success: function (data) {
-                    if (data.status == 200) {
+                    if (data.status === 200) {
                         $('#dataTable').DataTable().ajax.reload();
                         toastr.success('تم الاضافة بنجاح');
-                    } else if(data.status == 405){
+                    } else if(data.status === 405){
                         toastr.error(data.mymessage);
                     }
                     else
@@ -144,9 +144,11 @@
                     } else if (data.status === 422) {
                         var errors = $.parseJSON(data.responseText);
                         $.each(errors, function (key, value) {
+                            // alert(value);
                             if ($.isPlainObject(value)) {
                                 $.each(value, function (key, value) {
-                                    toastr.error(value, 'خطأ');
+                                    toastr.error(''+value);
+                                // alert(value);
                                 });
                             }
                         });
