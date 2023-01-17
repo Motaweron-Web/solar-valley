@@ -7,7 +7,6 @@ use App\Http\Requests\StoreProduct;
 use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Http\Request;
-use BinaryCats\Sku\Concerns\SkuGenerator;
 use Yajra\DataTables\Facades\DataTables;
 
 class ProductController extends Controller
@@ -35,21 +34,36 @@ class ProductController extends Controller
 
     public function create()
     {
-        $categoreis = Category::all();
-        return view('Admin.product.create', compact('categoreis'));
+        $products = Product::get();
+        $ids = ($products->count() > 0) ? Product::latest()->first()->id +  1 : 1;
+        $sku = "00" . $ids;
+        $categoreis = Category::get();
+        return view('Admin.product.create', compact('categoreis', 'products', 'sku'));
     }
 
     public function store(StoreProduct $request)
     {
         $inputs = $request->all();
-
         if($request->has('image'))
         {
             $file = $request->file('image');
-            $filename = date('YmdHi') . $file->getClientOriginalExtension();
+            $filename = date('YmdHi') . '.'. $file->getClientOriginalExtension();
             $file->move(public_path('public/Image'), $filename);
             $inputs['image'] = $filename;
         }
+
+        $tags = [];
+        if($request->has('tags') && $request->tags != null){
+
+            foreach($request->tags as $tag){
+
+                $tags[] = $tag;
+
+            }
+        }
+
+
+        $inputs['tags'] = json_encode($tags);
 
         if(Product::create($inputs))
         {
@@ -59,5 +73,51 @@ class ProductController extends Controller
         {
             return response()->json(['status' => 405]);
         }
+    }
+
+    public function edit(Product $product)
+    {
+        $categoreis = Category::get();
+        return view('Admin.product.edit', compact('product', 'categoreis'));
+    }
+
+    public function update(StoreProduct $request)
+    {
+        $product = Product::findOrFail($request->id);
+
+        $inputs = $request->all();
+
+        if ($request->has('image')) {
+
+            if (file_exists(public_path('assets/uploads/admins/images/') .$product->image)) {
+                unlink(('assets/uploads/admins/images/') .$product->image);
+            }
+            $inputs['image'] =  $request->image != null ? $this->saveImage($request->image, 'assets/uploads/admins/images') : $inputs['image'];
+        }
+
+        $tags = [];
+        if($request->has('tags') && $request->tags != null){
+
+            foreach($request->tags as $tag){
+
+                $tags[] = $tag;
+
+            }
+        }
+
+
+        $inputs['tags'] = $request->tags != null ? json_encode($tags) : $product->tags;
+
+        if ($product->update($inputs))
+            return response()->json(['status' => 200]);
+        else
+            return response()->json(['status' => 405]);
+    }
+
+    public function destroy(Request $request)
+    {
+        $categories = Product::where('id', $request->id)->first();
+        $categories->delete();
+            return response(['message' => 'تم الحذف بنجاح', 'status' => 200], 200);
     }
 }

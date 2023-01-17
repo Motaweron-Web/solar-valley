@@ -24,12 +24,12 @@ class StoreProduct extends FormRequest
     public function rules()
     {
         return [
-            'image' => 'required|image',
+            'image' => 'nullable|image',
             'title_ar' => 'required',
             'title_en' => 'required',
             'sub_title_ar' => 'required',
             'sub_title_en' => 'required',
-            // 'sku' => 'required',
+            'sku' => 'required',
             'category_id' => 'required',
             'tags' => 'required',
             'desc_ar' => 'required',

@@ -4,11 +4,10 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use BinaryCats\Sku\HasSku;
 
 class Product extends Model
 {
-    use HasFactory, HasSku;
+    use HasFactory;
 
     protected $table = 'products';
 
@@ -29,9 +28,13 @@ class Product extends Model
         'model_number',
     ];
 
-
+    protected $casts = [
+        'tags' => 'json',
+    ];
     public function category()
     {
-        return $this->belongsTo(Category::class, 'category_id');
+        return $this->belongsTo(Category::class, 'category_id'  );
     }
+
+
 }

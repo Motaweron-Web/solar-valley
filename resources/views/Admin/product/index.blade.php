@@ -84,7 +84,7 @@
 
         var columns = [
             {data: 'id', name: 'id'},
-            {data: 'title_en', name: 'title_en'},
+            {data: 'title_ar', name: 'title_ar'},
             {data: 'category_id', name: 'category_id'},
             {data: 'action', name: 'action', orderable: false, searchable: false},
         ]
@@ -93,10 +93,10 @@
         showAddModal('{{route('product.create')}}');
         addScript();
         // deleteModel
-        deleteScript('{{route('category.destroy',':id')}}');
+        destroyScript('{{route('product.destroy',':id')}}');
 
 
-        showEditModal('{{route('category.edit',':id')}}');
+        showEditModal('{{route('product.edit',':id')}}');
         editScript();
     </script>
 @stop
