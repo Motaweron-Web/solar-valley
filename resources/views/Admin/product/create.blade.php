@@ -141,4 +141,3 @@
         });
         $('#tags_input_tagsinput').addClass('form-control taggs');
     </script>
-
