@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Front\AboutUsController;
 use Illuminate\Support\Facades\Route;
 use Laravel\Socialite\Facades\Socialite;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
@@ -20,9 +21,35 @@ Route::group(
     [
         'prefix' => LaravelLocalization::setLocale(),
         'middleware' => ['localeSessionRedirect', 'localizationRedirect', 'localeViewPath']
-    ], function () {
+    ],
+    function () {
 
-        Route::get('/', function (){
-          return 'Home';
-        });
+
+
+        #### Home ####
+        Route::get('/', 'Front\HomeController@index')->name('home');
+
+        #### About Us ####
+        Route::get('/about_us', 'Front\AboutUsController@index')->name('about_us');
+
+        #### Contact ####
+        Route::get('/contact', 'Front\ContactController@index')->name('contact');
+
+        #### Service ####
+        Route::get('/service', 'Front\ServiceController@index')->name('service');
+
+        #### Request ####
+        Route::get('/request', 'Front\RequestController@index')->name('request');
+
+        #### Product ####
+        Route::get('/products', 'Front\ProductController@index')->name('product');
+        Route::get('/search','Front\ProductController@search');
+
+        #### Single ####
+        Route::get('/single', 'Front\SingleController@index')->name('single');
+        Route::get('/product/{id}', 'Front\SingleController@getProduct')->name('get.product');
+
+        #### Faqs ####
+        Route::get('/faqs', 'Front\FaqsController@index')->name('faqs');
+
 });

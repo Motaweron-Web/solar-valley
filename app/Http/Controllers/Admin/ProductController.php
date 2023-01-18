@@ -100,7 +100,7 @@ class ProductController extends Controller
 
             foreach($request->tags as $tag){
 
-                $tags[] = $tag;
+                $tags = $tag;
 
             }
         }
