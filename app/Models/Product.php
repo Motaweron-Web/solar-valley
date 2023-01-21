@@ -12,7 +12,7 @@ class Product extends Model
     protected $table = 'products';
 
     protected $fillable = [
-        'image',
+        'images',
         'title_ar',
         'title_en',
         'sub_title_ar',
@@ -30,9 +30,10 @@ class Product extends Model
 
     protected $casts = [
         'tags' => 'json',
+        'images' => 'array'
     ];
     public function category()
     {
-        return $this->belongsTo(Category::class, 'category_id'  );
+        return $this->belongsTo(Category::class, 'category_id');
     }
 }

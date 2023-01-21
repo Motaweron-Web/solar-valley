@@ -2,26 +2,6 @@
 
 @section('content')
 
-<div class="module-content module-search-warp">
-    <div class="pos-vertical-center">
-      <div class="container">
-        <div class="row">
-          <div class="col-sm-12 col-md-12 col-lg-8 offset-lg-2">
-            <form class="form-search">
-              <input
-                class="form-control"
-                type="text"
-                placeholder="type words then enter"
-              />
-              <button></button>
-            </form>
-          </div>
-        </div>
-      </div>
-    </div>
-    <a class="module-cancel" href="#"><i class="fas fa-times"></i></a>
-  </div>
-
   <section class="page-title page-title-10" id="page-title">
     <div class="page-title-wrap bg-overlay bg-overlay-dark-2">
       <div class="bg-section">
@@ -480,5 +460,4 @@
       </div>
     </div>
   </section>
-
 @endsection

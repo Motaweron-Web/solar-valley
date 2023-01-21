@@ -19,7 +19,7 @@ Trait  PhotoTrait
 
         // to save other files
         else{
-            $file_extension = $photo -> getClientOriginalExtension();
+            $file_extension = $photo->getClientOriginalExtension();
             $file_name =  $folder.'/'.rand('1','9999').time().'.'.$file_extension;
             $photo -> move($folder,$file_name);
         }

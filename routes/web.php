@@ -16,40 +16,39 @@ use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 |
 */
 
-
 Route::group(
     [
-        'prefix' => LaravelLocalization::setLocale(),
+        'prefix' => LaravelLocalization::setLocale(), 'namespace' => 'Front',
         'middleware' => ['localeSessionRedirect', 'localizationRedirect', 'localeViewPath']
-    ],
-    function () {
+    ], function () {
 
 
+    #### Home ####
+    Route::get('/', 'HomeController@index')->name('home');
 
-        #### Home ####
-        Route::get('/', 'Front\HomeController@index')->name('home');
+    #### About Us ####
+    Route::get('/about_us', 'AboutUsController@index')->name('about_us');
 
-        #### About Us ####
-        Route::get('/about_us', 'Front\AboutUsController@index')->name('about_us');
+    #### Contact ####
+    Route::get('/contact', 'ContactController@index')->name('contact');
 
-        #### Contact ####
-        Route::get('/contact', 'Front\ContactController@index')->name('contact');
+    #### Service ####
+    Route::get('/service', 'ServiceController@index')->name('service');
 
-        #### Service ####
-        Route::get('/service', 'Front\ServiceController@index')->name('service');
+    #### Request ####
+    Route::get('/request', 'RequestController@index')->name('request');
 
-        #### Request ####
-        Route::get('/request', 'Front\RequestController@index')->name('request');
+    #### Product ####
+    Route::get('/products', 'ProductController@index')->name('product');
+    Route::get('/search', 'ProductController@search')->name('product-search');
+    Route::get('/filter', 'ProductController@filter')->name('product-filter');
+    Route::get('/categorySort', 'ProductController@categorySort')->name('categorySort');
 
-        #### Product ####
-        Route::get('/products', 'Front\ProductController@index')->name('product');
-        Route::get('/search','Front\ProductController@search');
+    #### Single ####
+    Route::get('/single', 'SingleController@index')->name('single');
+    Route::get('/product/{id}', 'SingleController@getProduct')->name('get.product');
 
-        #### Single ####
-        Route::get('/single', 'Front\SingleController@index')->name('single');
-        Route::get('/product/{id}', 'Front\SingleController@getProduct')->name('get.product');
-
-        #### Faqs ####
-        Route::get('/faqs', 'Front\FaqsController@index')->name('faqs');
+    #### Faqs ####
+    Route::get('/faqs', 'FaqsController@index')->name('faqs');
 
 });

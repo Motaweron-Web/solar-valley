@@ -18,6 +18,12 @@
       rel="stylesheet"
     />
 
+    <!-- slick plugin -->
+    <link href="{{ asset('assets/front/') }}/assets/css/slick-theme.css" rel="stylesheet" />
+    <link href="{{ asset('assets/front/') }}/assets/css/slick.css" rel="stylesheet" />
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+
     <link href="{{ asset('assets/front/') }}/assets/css/vendor.min.css" rel="stylesheet" />
     <link href="{{ asset('assets/front/') }}/assets/css/style.css" rel="stylesheet" />
 
