@@ -16,28 +16,6 @@ class AboutUsController extends Controller
     {
         $about_us = AboutUs::find(1);
         return view('Admin.about_us.index', compact('about_us'));
-        // if($request->ajax()) {
-        //     $about_us = AboutUs::select('*');
-        //     return DataTables::of( $about_us)
-        //         ->addColumn('action', function ($about_us) {
-        //             return '
-        //                     <button type="button" data-id="' . $about_us->id . '" class="btn btn-pill btn-warning editBtn"><i class="fa fa-edit"></i></button>
-        //                     <button class="btn btn-pill btn-danger" data-toggle="modal" data-target="#delete_modal"
-        //                             data-id="' . $about_us->id . '" data-title="' . $about_us->name . '">
-        //                             <i class="fas fa-trash"></i>
-        //                     </button>
-        //                ';
-        //         })
-        //         ->escapeColumns([])
-        //         ->make(true);
-        // }else{
-        //     return view('Admin.about_us.index');
-        // }
-    }
-
-    public function show()
-    {
-        return view('Admin.about_us.index');
     }
 
     public function update(StoreAbout $request, AboutUs $about_us)

@@ -30,6 +30,7 @@ class CreateQuotesTable extends Migration
             $table->string('email');
             $table->string('prefer_contact');
             $table->string('address');
+            $table->string('state');
             $table->string('city');
             $table->string('zip');
             $table->string('country');

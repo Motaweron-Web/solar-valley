@@ -79,9 +79,12 @@
           </div>
           <div class="row">
 
+
+
+            {{-- <div class="col-12 col-md-6 col-lg-4 form-search alldata"> --}}
             @foreach ($products as $product)
 
-            <div class="col-12 col-md-6 col-lg-4">
+            <div class="col-12 col-md-6 col-lg-4 form-search">
               <div class="product-item" data-hover="">
                 <div class="product-img-wrap">
                   <div class="product-img">
@@ -105,6 +108,16 @@
               </div>
             </div>
             @endforeach
+
+              <div class="swiper-slide">
+                  <div class="products-2">
+
+                  </div>
+              </div>
+
+
+
+            {{-- </div> --}}
           </div>
 
           <div class="row">
@@ -133,8 +146,9 @@
               <div class="widget-content">
                 <ul class="list-unstyled">
                   <li>
-                    <a href="shop-products.html">{{ $category->title_en }}</a
-                    ><span>{{ $category->product->count() }}</span>
+                    <input type="checkbox" class="form-check-input"/>
+                    <label for="">{{ $category->title_en }}</label>
+                    <span>{{ $category->product->count() }}</span>
                   </li>
                 </ul>
               </div>
@@ -148,11 +162,11 @@
                 <h5>search</h5>
               </div>
               <div class="widget-content">
-                <form class="form-search">
+                <form>
                   <div class="input-group">
                     <input
                       class="form-control"
-                      type="text"
+                      type="search"
                       placeholder="Search ..."
                       name="search"
                       id="search"
@@ -227,20 +241,5 @@
       </div>
     </div>
   </section>
-
-    <script script type="text/javascript">
-        $('#search').on('keyup', function() {
-            $value = $(this).val();
-
-            $.ajax({
-                type : 'get',
-                url : '{{ URL::to('search') }}',
-                data : {'search':$value},
-                success : function(data) {
-                    $('.form-search').html(data)
-                }
-            });
-        })
-    </script>
 
 @endsection

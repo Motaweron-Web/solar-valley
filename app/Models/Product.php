@@ -27,12 +27,10 @@ class Product extends Model
         'dimensions',
         'model_number',
     ];
-
-    protected $casts = [
-        'tags' => 'json',
-    ];
     public function category()
     {
         return $this->belongsTo(Category::class, 'category_id'  );
     }
+
+
 }

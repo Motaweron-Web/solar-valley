@@ -40,10 +40,10 @@ Route::group(
 
         #### Request ####
         Route::get('/request', 'Front\RequestController@index')->name('request');
+        Route::post('/store', 'Front\RequestController@store')->name('store.request');
 
         #### Product ####
         Route::get('/products', 'Front\ProductController@index')->name('product');
-        Route::get('/search','Front\ProductController@search');
 
         #### Single ####
         Route::get('/single', 'Front\SingleController@index')->name('single');
@@ -51,5 +51,8 @@ Route::group(
 
         #### Faqs ####
         Route::get('/faqs', 'Front\FaqsController@index')->name('faqs');
+
+
+
 
 });

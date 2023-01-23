@@ -14,6 +14,8 @@ id="navbar-spy"
       <div class="contact-infos">
         <i class="energia-email--icon"></i>
         <div class="contact-body">
+            @foreach ($settings as $setting)
+
           <p>
             email:
             <a
@@ -21,28 +23,35 @@ id="navbar-spy"
               ><span
                 class="__cf_email__"
                 data-cfemail="9df4f3fbf2ddf8f3f8effaf4fcb3fef2f0"
-                >[email&#160;protected]</span
+                >{{ $setting->email }}</span
               >
             </a>
           </p>
+          @endforeach
         </div>
       </div>
       <div class="contact-infos">
         <i class="energia-clock-Icon"></i>
+        @foreach ($settings as $setting)
+
         <div class="contact-body">
-          <p>hours: Mon-Fri: 8am – 7pm</p>
+          <p>hours: {{ $setting->work_date }}</p>
         </div>
+        @endforeach
       </div>
     </div>
 
     <div class="social-links">
-      <a class="share-facebook" href="javascript:void(0)"
+        @foreach ($settings as $setting)
+
+      <a class="share-facebook" href="{{ $setting->facebook }}"
         ><i class="energia-facebook"></i></a
-      ><a class="share-instagram" href="javascript:void(0)"
+      ><a class="share-twitter" href="{{ $setting->twitter }}"
         ><i class="energia-twitter"></i></a
-      ><a class="share-twitter" href="javascript:void(0)"
+      ><a class="share-youtube" href="{{ $setting->youtube }}"
         ><i class="energia-youtube"></i
       ></a>
+      @endforeach
     </div>
   </div>
 </div>
@@ -262,7 +271,7 @@ id="navbar-spy"
         <i class="icons-energiaphone-call"> </i>
         <div>
           <p>call us now:</p>
-          <a href="tel:01061245741">+2 01061245741</a>
+          +20 <a href="tel:{{ $setting->phone }}">{{ $setting->phone }}</a>
         </div>
       </div>
       <div class="module module-search">

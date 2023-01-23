@@ -2,14 +2,20 @@
 class="header header-light header-topbar header-topbar1 header-shadow"
 id="navbar-spy"
 >
+@foreach ($settings as $setting)
+
 <div class="top-bar">
   <div class="block-left">
     <div class="top-contact">
       <div class="contact-infos">
+
+
         <i class="energia-phone-Icon"></i>
         <div class="contact-body">
-          <p>phone: <a href="tel:123-456-7890">+55 654 541 17</a></p>
+          <p>phone: +20 <a href="tel:{{ $setting->phone }}">{{ $setting->phone }}</a></p>
         </div>
+
+
       </div>
       <div class="contact-infos">
         <i class="energia-email--icon"></i>
@@ -21,7 +27,7 @@ id="navbar-spy"
               ><span
                 class="__cf_email__"
                 data-cfemail="b5dcdbd3daf5d0dbd0c7d2dcd49bd6dad8"
-                >[email&#160;protected]</span
+                >{{ $setting->email }}</span
               >
             </a>
           </p>
@@ -30,18 +36,18 @@ id="navbar-spy"
       <div class="contact-infos">
         <i class="energia-clock-Icon"></i>
         <div class="contact-body">
-          <p>hours: Mon-Fri: 8am – 7pm</p>
+          <p>hours: {{ $setting->work_date }}</p>
         </div>
       </div>
     </div>
   </div>
   <div class="block-right">
     <div class="social-links">
-      <a class="share-facebook" href="javascript:void(0)"
+      <a class="share-facebook" href="{{ $setting->facebook }}"
         ><i class="energia-facebook"></i></a
-      ><a class="share-instagram" href="javascript:void(0)"
+      ><a class="share-twitter" href="{{ $setting->twitter }}"
         ><i class="energia-twitter"></i></a
-      ><a class="share-twitter" href="javascript:void(0)"
+      ><a class="share-youtube" href="{{ $setting->youtube }}"
         ><i class="energia-youtube"></i
       ></a>
     </div>
@@ -78,6 +84,8 @@ id="navbar-spy"
     </div>
   </div>
 </div>
+
+@endforeach
 <nav class="navbar navbar-expand-lg navbar-sticky" id="primary-menu"><a class="navbar-brand" href="index.html"><img class="logo logo-dark" src="{{ asset('assets/front/') }}/assets/images/logo/logo-dark.png" alt="Energia Logo" /><img class="logo logo-mobile" src="assets/images/logo/logo-mobile.png" alt="Energia Logo" /></a>
   <div class="module-holder module-holder-phone">
   <div class="module module-search">
@@ -260,7 +268,7 @@ id="navbar-spy"
           </li>
         </ul>
       </li> -->
-      <li class="nav-item @if (Route::currentRouteName() == 'contact' ) active @endif" id="contact" data-hover="">
+      <li class="nav-item @if (Route::currentRouteName() == 'contactp' ) active @endif" id="contact" data-hover="">
         <a href="{{ route('contact') }}"><span>contact</span></a>
       </li>
     </ul>

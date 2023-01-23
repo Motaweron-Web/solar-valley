@@ -360,12 +360,15 @@
           <div class="counters-holder">
             <div class="counter counter-3">
               <div class="counter-holder">
+
+                @foreach ($settings as $setting)
+
                 <div class="counter-num">
                   <span
                     class="counting"
                     data-counterup-nums="25"
                     data-counterup-beginat="12"
-                    >25</span
+                    >{{ $setting->year_of_experince }}</span
                   >
                 </div>
                 <div class="counter-img">
@@ -374,6 +377,9 @@
                   </div>
                   <i class="flaticon-020-factory"></i>
                 </div>
+
+                @endforeach
+
               </div>
               <div class="counter-desc">
                 <p>Years Of Experience In The Solar Industry</p>

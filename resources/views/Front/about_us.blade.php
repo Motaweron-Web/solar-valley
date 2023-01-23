@@ -2,6 +2,7 @@
 
 @section('content')
 
+
 <div class="module-content module-search-warp">
     <div class="pos-vertical-center">
       <div class="container">
@@ -430,128 +431,7 @@
 
             @endforeach
 
-            {{-- <div>
-              <div class="project-panel" data-hover="">
-                <div class="project-panel-holder">
-                  <div class="project-img">
-                    <a class="link" href="shop-single.html"></a
-                    ><img
-                      src="{{ asset('assets/front') }}/assets/images/projects/modern/2.jpg"
-                      alt="project image"
-                    />
-                  </div>
 
-                  <div class="project-content">
-                    <!-- <div class="project-cat">
-                      <a href="projects-standard.html">energy</a
-                      ><a href="projects-standard.html">green energy</a>
-                    </div> -->
-                    <div class="project-title">
-                      <h4>
-                        <a href="shop-single.html"
-                          >Suntree - DC Protections</a
-                        >
-                      </h4>
-                    </div>
-                    <div class="project-desc">
-                      <p>
-                        After 10 years of experience, Suntree has won as many as 40 patents, including 10 invention patents.
-                         During this period, Suntree not only acquired Shenzhen Litto New Energy Co.,Ltd, entered into
-                         Grid inverter market but also was rated as state-level high-tech
-                      </p>
-                    </div>
-                    <div class="project-more">
-                      <a
-                        class="btn btn--bordered btn--white"
-                        href="shop-single.html"
-                        >explore more <i class="energia-arrow-right"></i
-                      ></a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div> --}}
-            {{-- <div>
-              <div class="project-panel" data-hover="">
-                <div class="project-panel-holder">
-                  <div class="project-img">
-                    <a class="link" href="shop-single.html"></a
-                    ><img
-                      src="{{ asset('assets/front') }}/assets/images/projects/modern/3.jpg"
-                      alt="project image"
-                    />
-                  </div>
-
-                  <div class="project-content">
-                    <!-- <div class="project-cat">
-                      <a href="projects-standard.html">eco</a
-                      ><a href="projects-standard.html">green energy</a>
-                    </div> -->
-                    <div class="project-title">
-                      <h4>
-                        <a href="shop-single.html"
-                          >NewMax, Batteries</a
-                        >
-                      </h4>
-                    </div>
-                    <div class="project-desc">
-                      <p>
-                        NewMax Battery boasts over 25 years of experience and endless R&D effort to be one of the most innovative battery companies in the world.
-NewMax makes use of state-of-the-art manufacturing and testing facilities to build the most advanced products on the market today
-                      </p>
-                    </div>
-                    <div class="project-more">
-                      <a
-                        class="btn btn--bordered btn--white"
-                        href="shop-single.html"
-                        >explore more <i class="energia-arrow-right"></i
-                      ></a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div> --}}
-            {{-- <div>
-              <div class="project-panel" data-hover="">
-                <div class="project-panel-holder">
-                  <div class="project-img">
-                    <a class="link" href="shop-single.html"></a
-                    ><img
-                      src="{{ asset('assets/front') }}/assets/images/projects/modern/4.jpg"
-                      alt="project image"
-                    />
-                  </div>
-
-                  <div class="project-content">
-                    <!-- <div class="project-cat">
-                      <a href="projects-standard.html">eco</a
-                      ><a href="projects-standard.html">green energy</a>
-                    </div> -->
-                    <div class="project-title">
-                      <h4>
-                        <a href="shop-single.html"
-                          >MUST, Off-Grid Solutions</a
-                        >
-                      </h4>
-                    </div>
-                    <div class="project-desc">
-                      <p>
-                        Must Power, an innovative high technology company, specializes in R&D,
-                        manufacturing and marketing of photovoltaic (PV) inverters, Solar charge controller,
-                        Solar battery and some other related Solar products.Our innovative solutions for all photovoltaic
-                      </p>
-                    </div>
-                    <div class="project-more">
-                      <a
-                        class="btn btn--bordered btn--white"
-                        href="shop-single.html"
-                        >explore more <i class="energia-arrow-right"></i
-                      ></a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div> --}}
           </div>
         </div>
       </div>

@@ -104,71 +104,11 @@
                   products allows us to ensure our customers receive the
                   best quality service.
                 </p>
-                <form
-                  class="contactForm"
-                  method="post"
-                  action="assets/php/contact.php.html"
-                >
-                  <div class="row">
-                    <div class="col-12 col-md-6">
-                      <input
-                        class="form-control"
-                        type="text"
-                        id="contact-name"
-                        name="contact-name"
-                        placeholder="Name"
-                        required=""
-                      />
-                    </div>
-                    <div class="col-12 col-md-6">
-                      <input
-                        class="form-control"
-                        type="text"
-                        id="contact-email"
-                        name="contact-email"
-                        placeholder="Email"
-                        required=""
-                      />
-                    </div>
-                    <div class="col-12 col-md-6">
-                      <input
-                        class="form-control"
-                        type="text"
-                        id="contact-phone"
-                        name="contact-phone"
-                        placeholder="Phone"
-                        required=""
-                      />
-                    </div>
-                    <div class="col-12 col-md-6">
-                      <select class="form-control" id="select-1">
-                        <option value="default">
-                          select your services
-                        </option>
-                        <option value="s1">service 1</option>
-                        <option value="s2">service 2</option>
-                      </select>
-                    </div>
-                    <div class="col-12">
-                      <textarea
-                        class="form-control"
-                        id="contact-infos"
-                        placeholder="additional information"
-                        name="contact-infos"
-                        cols="30"
-                        rows="10"
-                      ></textarea>
-                    </div>
-                    <div class="col-12">
-                      <button class="btn btn--secondary">
-                        submit request <i class="energia-arrow-right"></i>
+                  <div class="col-12">
+                      <button class="btn btn--secondary" href="{{ route('request') }}" type="button">
+                          submit request <i class="energia-arrow-right"></i>
                       </button>
-                    </div>
-                    <div class="col-12">
-                      <div class="contact-result"></div>
-                    </div>
                   </div>
-                </form>
               </div>
             </div>
           </div>

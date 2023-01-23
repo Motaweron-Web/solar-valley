@@ -22,7 +22,6 @@
     <link href="{{ asset('assets/front/') }}/assets/css/style.css" rel="stylesheet" />
 
     <link href="{{ asset('assets/front/') }}/assets/css/edit.css" rel="stylesheet" />
-
     <script>
       (function (w, d, s, l, i) {
         w[l] = w[l] || [];

@@ -13,7 +13,7 @@ class StoreQuote extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,23 @@ class StoreQuote extends FormRequest
     public function rules()
     {
         return [
-            //
+            'who_install' => 'required',
+            'system_complete' => 'required',
+            'usage' => 'required',
+            'system_type' => 'required',
+            'panels_place' => 'required',
+            'your_roof' => 'required',
+            'message' => 'required',
+            'first_name' => 'required',
+            'last_name' => 'required',
+            'phone' => 'required',
+            'email' => 'required',
+            'prefer_contact' => 'required',
+            'address' => 'required',
+            'state' => 'required',
+            'city' => 'required',
+            'zip' => 'required',
+            'country' => 'required',
         ];
     }
 }

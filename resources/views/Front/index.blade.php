@@ -32,10 +32,10 @@
             data-nav="true"
             data-dots="true"
             data-space="0"
-            data-loop="true"
+            data-loop="false"
             data-speed="800"
           >
-            <div class="slide bg-overlay bg-overlay-dark-slider-2">
+            {{-- <div class="slide bg-overlay bg-overlay-dark-slider-2">
               <div class="bg-section">
                 <img src="{{ asset('assets/front') }}/assets/images/sliders/3.jpg" alt="Background" />
               </div>
@@ -65,7 +65,9 @@
                   </div>
                 </div>
               </div>
-            </div>
+            </div> --}}
+
+            @foreach ($settings as $setting)
 
             <div class="slide bg-overlay bg-overlay-dark-slider-2">
               <div class="bg-section">
@@ -76,7 +78,7 @@
                   <div class="col-12 col-lg-7">
                     <div class="slide-content">
                       <h1 class="slide-headline">
-                        shaping future of solar energy!
+                        {{ $setting->title_en }}
                       </h1>
                       <p class="slide-desc">
                         As a world wide distributor of solar supplies we
@@ -84,20 +86,25 @@
                         get you materials by sea or air.
                       </p>
                       <div class="slide-action">
-                        <a class="btn btn--primary" href="page-services.html">
+                        <a class="btn btn--primary" href="{{ route('service') }}">
                           <span>our services</span
                           ><i class="energia-arrow-right"></i></a
                         ><a
                           class="btn btn--white justify-content-center"
-                          href="page-about.html"
+                          href="{{ route('about_us') }}"
                           >more about us!</a
                         >
                       </div>
+
+
                     </div>
                   </div>
                 </div>
               </div>
             </div>
+
+            @endforeach
+
           </div>
         </div>
       </section>
@@ -617,6 +624,9 @@
                   Fueling The Transition To Renewable Power.
                 </h2>
               </div>
+
+              @foreach ($settings as $setting)
+
               <div class="counters-holder">
                 <div class="counter counter-3">
                   <div class="counter-holder">
@@ -625,7 +635,7 @@
                         class="counting"
                         data-counterup-nums="25"
                         data-counterup-beginat="12"
-                        >25</span
+                        >{{ $setting->year_of_experince }}</span
                       >
                     </div>
                     <div class="counter-img">
@@ -640,6 +650,9 @@
                   </div>
                 </div>
               </div>
+
+              @endforeach
+
             </div>
           </div>
           <div class="col-12 col-lg-6">
