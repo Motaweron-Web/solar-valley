@@ -24,14 +24,15 @@ class StoreProduct extends FormRequest
     public function rules()
     {
         return [
-            'image' => 'nullable|image',
+            'images' => 'nullable|array',
+            'images*' => 'nullable|image',
             'title_ar' => 'required',
             'title_en' => 'required',
             'sub_title_ar' => 'required',
             'sub_title_en' => 'required',
             'sku' => 'required',
             'category_id' => 'required',
-            'tags' => 'required',
+            'tags' => 'nullable',
             'desc_ar' => 'required',
             'desc_en' => 'required',
             'part_number' => 'required',

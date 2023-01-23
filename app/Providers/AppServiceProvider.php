@@ -2,9 +2,8 @@
 
 namespace App\Providers;
 
-use App\Models\Setting;
+use Illuminate\Pagination\Paginator;
 use Illuminate\Support\ServiceProvider;
-use View;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -26,5 +25,6 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
 //        View::share('setting',Setting::first());
+        Paginator::useBootstrap();
     }
 }

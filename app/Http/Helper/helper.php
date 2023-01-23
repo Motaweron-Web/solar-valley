@@ -41,6 +41,22 @@ if (!function_exists('user')) {
     }
 }
 
+if(!function_exists('lang')){
+
+    function lang(){
+
+        return Config::get('app.locale');
+    }
+}
+if (!function_exists('trans_model')) {
+
+    function trans_model($model,$word){
+
+        return $model->{$word.'_'. app()->getlocale()};
+    }
+
+}
+
 function get_font_icons(){
     $icons = array (
         0 => 'fab fa-500px',

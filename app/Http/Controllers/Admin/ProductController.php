@@ -6,28 +6,30 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreProduct;
 use App\Models\Category;
 use App\Models\Product;
+use App\Traits\PhotoTrait;
 use Illuminate\Http\Request;
 use Yajra\DataTables\Facades\DataTables;
 
 class ProductController extends Controller
 {
+    use PhotoTrait;
     public function index(Request $request)
     {
-        if($request->ajax()) {
+        if ($request->ajax()) {
             $products = Product::select('*');
-            return DataTables::of( $products)
-                ->addColumn('action', function ( $products) {
+            return DataTables::of($products)
+                ->addColumn('action', function ($products) {
                     return '
-                            <button type="button" data-id="' .  $products->id . '" class="btn btn-pill btn-warning editBtn"><i class="fa fa-edit"></i></button>
+                            <button type="button" data-id="' . $products->id . '" class="btn btn-pill btn-warning editBtn"><i class="fa fa-edit"></i></button>
                             <button class="btn btn-pill btn-danger" data-toggle="modal" data-target="#delete_modal"
-                                    data-id="' .  $products->id . '" data-title="' .  $products->title_en . '">
+                                    data-id="' . $products->id . '" data-title="' . $products->title_en . '">
                                     <i class="fas fa-trash"></i>
                             </button>
                        ';
                 })
                 ->escapeColumns([])
                 ->make(true);
-        }else{
+        } else {
             return view('Admin.product.index');
         }
     }
@@ -35,7 +37,7 @@ class ProductController extends Controller
     public function create()
     {
         $products = Product::get();
-        $ids = ($products->count() > 0) ? Product::latest()->first()->id +  1 : 1;
+        $ids = ($products->count() > 0) ? Product::latest()->first()->id + 1 : 1;
         $sku = "00" . $ids;
         $categoreis = Category::get();
         return view('Admin.product.create', compact('categoreis', 'products', 'sku'));
@@ -44,33 +46,27 @@ class ProductController extends Controller
     public function store(StoreProduct $request)
     {
         $inputs = $request->all();
-        if($request->has('image'))
-        {
-            $file = $request->file('image');
-            $filename = date('YmdHi') . '.'. $file->getClientOriginalExtension();
-            $file->move(public_path('public/Image'), $filename);
-            $inputs['image'] = $filename;
-        }
 
-        $tags = [];
-        if($request->has('tags') && $request->tags != null){
-
-            foreach($request->tags as $tag){
-
-                $tags[] = $tag;
-
+        if($request->has('files')){
+            foreach($request->file('files') as $file)
+            {
+                $inputs['images'][] = $this->saveImage($file,'assets/uploads/products','photo');
             }
         }
+        unset($inputs['files']);
+//        dd($inputs);
 
-
+        $tags = [];
+        if ($request->has('tags') && $request->tags != null) {
+            foreach ($request->tags as $tag) {
+                $tags[] = $tag;
+            }
+        }
         $inputs['tags'] = json_encode($tags);
 
-        if(Product::create($inputs))
-        {
+        if (Product::create($inputs)) {
             return response()->json(['status' => 200]);
-        }
-        else
-        {
+        } else {
             return response()->json(['status' => 405]);
         }
     }
@@ -89,16 +85,16 @@ class ProductController extends Controller
 
         if ($request->has('image')) {
 
-            if (file_exists(public_path('assets/uploads/admins/images/') .$product->image)) {
-                unlink(('assets/uploads/admins/images/') .$product->image);
+            if (file_exists(public_path('assets/uploads/admins/images/') . $product->image)) {
+                unlink(('assets/uploads/admins/images/') . $product->image);
             }
-            $inputs['image'] =  $request->image != null ? $this->saveImage($request->image, 'assets/uploads/admins/images') : $inputs['image'];
+            $inputs['image'] = $request->image != null ? $this->saveImage($request->image, 'assets/uploads/admins/images') : $inputs['image'];
         }
 
         $tags = [];
-        if($request->has('tags') && $request->tags != null){
+        if ($request->has('tags') && $request->tags != null) {
 
-            foreach($request->tags as $tag){
+            foreach ($request->tags as $tag) {
 
                 $tags = $tag;
 
@@ -118,6 +114,6 @@ class ProductController extends Controller
     {
         $categories = Product::where('id', $request->id)->first();
         $categories->delete();
-            return response(['message' => 'تم الحذف بنجاح', 'status' => 200], 200);
+        return response(['message' => 'تم الحذف بنجاح', 'status' => 200], 200);
     }
 }

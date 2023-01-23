@@ -49,3 +49,21 @@
   .btn-center{
     justify-content: center !important;
   }
+  .page-title.page-title-12 .page-title-wrap{
+    background-position: center !important;
+  }
+  .pdf{
+    color: black;
+    margin-left: 10px;
+    cursor: pointer;
+  }
+ 
+  /* slick slider */
+.slick-prev::before,
+.slick-next::before{
+    display: none;
+}
+.slick-prev,
+.slick-next{
+    display: none !important;
+}
