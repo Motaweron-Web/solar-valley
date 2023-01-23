@@ -32,6 +32,7 @@ class Product extends Model
         'tags' => 'json',
         'images' => 'array'
     ];
+    
     public function category()
     {
         return $this->belongsTo(Category::class, 'category_id');

@@ -25,7 +25,7 @@
   <section class="page-title page-title-14" id="page-title">
     <div class="page-title-wrap bg-overlay bg-overlay-dark-3">
       <div class="bg-section">
-        <img src="assets/images/page-titles/14.jpg" alt="Background" />
+        <img src="{{ asset('assets/front') }}/assets/images/page-titles/14.jpg" alt="Background" />
       </div>
       <div class="container">
         <div class="row">
@@ -80,7 +80,7 @@
             >
           </div>
           <div class="contact-quote contact-quote-3">
-            <img src="assets/images/icons/noteicon-2.png" alt="icon" />
+            <img src="{{ asset('assets/front') }}/assets/images/icons/noteicon-2.png" alt="icon" />
             <p>
               Receive an accurate quote within 3-5 days when you fill out
               this form. Or, give us a call:
@@ -96,26 +96,27 @@
               products allows us to ensure our customers receive the best
               quality service.
             </p>
-            <form class="contactForm" method="post" action="assets/php/contact.php.html">
+            <form id="addForm" class="form-qoute" method="post" action="{{ route('store.request') }}">
+                @csrf
               <div class="mb-20">
                 <div class="row">
                   <div class="col-12 col-md-6">
                     <label class="form-label" for="select-1"
                       >Who will be install system?</label
                     >
-                    <select class="form-control" id="select-1">
-                      <option value="default">local contractor</option>
-                      <option value="AL">foreign contractor</option>
+                    <select class="form-control" id="select-1" name="who_install">
+                      <option value="local contractor">local contractor</option>
+                      <option value="foreign contractor">foreign contractor</option>
                     </select>
                   </div>
                   <div class="col-12 col-md-6">
                     <label class="form-label" for="select-2"
                       >System completed by?</label
                     >
-                    <select class="form-control" id="select-2">
-                      <option value="default">3:6 months</option>
-                      <option value="AL">6:12 months</option>
-                      <option value="AK">12:24 months</option>
+                    <select class="form-control" id="select-2" name="system_complete">
+                      <option value="3:6 months">3:6 months</option>
+                      <option value="6:12 months">6:12 months</option>
+                      <option value="12:24 months">12:24 months</option>
                     </select>
                   </div>
                   <div class="col-12 col-md-6">
@@ -126,7 +127,7 @@
                       class="form-control"
                       type="text"
                       id="contact-usage"
-                      name="contact-usage"
+                      name="usage"
                       placeholder="1254 KWH"
                       required=""
                     />
@@ -135,27 +136,27 @@
                     <label class="form-label" for="select-3"
                       >Solar system type?</label
                     >
-                    <select class="form-control" id="select-3">
-                      <option value="default">OffGrid</option>
-                      <option value="AL">OnGrid</option>
+                    <select class="form-control" id="select-3" name="system_type">
+                      <option value="OffGrid">OffGrid</option>
+                      <option value="OnGrid">OnGrid</option>
                     </select>
                   </div>
                   <div class="col-12 col-md-6">
                     <label class="form-label" for="select-4"
                       >Solar panels place?</label
                     >
-                    <select class="form-control" id="select-4">
-                      <option value="default">huge farm</option>
-                      <option value="AL">small farm</option>
+                    <select class="form-control" id="select-4" name="panels_place">
+                      <option value="huge farm">huge farm</option>
+                      <option value="small farm">small farm</option>
                     </select>
                   </div>
                   <div class="col-12 col-md-6">
                     <label class="form-label" for="select-5"
                       >Materials on your roof?</label
                     >
-                    <select class="form-control" id="select-5">
-                      <option value="default">comp shingle</option>
-                      <option value="AL">roof shingle</option>
+                    <select class="form-control" id="select-5" name="your_roof">
+                      <option value="comp shingle">comp shingle</option>
+                      <option value="roof shingle">roof shingle</option>
                     </select>
                   </div>
                   <div class="col-12">
@@ -166,7 +167,7 @@
                       class="form-control"
                       id="contact-projects"
                       placeholder="Add other data"
-                      name="contact-projects"
+                      name="message"
                       cols="30"
                       rows="10"
                     >
@@ -184,7 +185,7 @@
                       class="form-control"
                       type="text"
                       id="contact-first-name"
-                      name="contact-first-name"
+                      name="first_name"
                       placeholder="Mahmoud"
                       required=""
                     />
@@ -197,7 +198,7 @@
                       class="form-control"
                       type="text"
                       id="contact-last-name"
-                      name="contact-last-name"
+                      name="last_name"
                       placeholder="Adel"
                       required=""
                     />
@@ -210,7 +211,7 @@
                       class="form-control"
                       type="text"
                       id="contact-phone"
-                      name="contact-phone"
+                      name="phone"
                       placeholder="Phone"
                       required=""
                     />
@@ -223,7 +224,7 @@
                       class="form-control"
                       type="email"
                       id="contact-email"
-                      name="contact-email"
+                      name="email"
                       placeholder="Email"
                       required=""
                     />
@@ -242,7 +243,9 @@
                           class="custom-control-input"
                           type="radio"
                           id="customRadioInline1"
-                          name="customRadioInline1"
+                          data-id="all-check"
+                          data-value="all"
+                          name="prefer_contact"
                         />
                         <label for="customRadioInline1">all</label>
                       </div>
@@ -251,7 +254,10 @@
                           class="custom-control-input"
                           type="radio"
                           id="customRadioInline2"
-                          name="customRadioInline1"
+                          data-id="email-check"
+                          data-value="email"
+
+                          name="prefer_contact"
                         />
                         <label for="customRadioInline2">email</label>
                       </div>
@@ -260,7 +266,10 @@
                           class="custom-control-input"
                           type="radio"
                           id="customRadioInline3"
-                          name="customRadioInline1"
+                          data-id="phone-check"
+                          data-value="phone"
+
+                          name="prefer_contact"
                         />
                         <label for="customRadioInline3">phone</label>
                       </div>
@@ -278,7 +287,7 @@
                       class="form-control"
                       type="text"
                       id="contact-address"
-                      name="contact-address"
+                      name="address"
                       placeholder="write street address"
                       required=""
                     />
@@ -291,17 +300,17 @@
                       class="form-control"
                       type="text"
                       id="contact-city"
-                      name="contact-city"
+                      name="city"
                       placeholder="write city"
                       required=""
                     />
                   </div>
                   <div class="col-12 col-md-6">
                     <label class="form-label" for="select-6">State</label>
-                    <select class="form-control" id="select-6">
-                      <option value="default">Alabama</option>
-                      <option value="AL">New york</option>
-                      <option value="AL">california</option>
+                    <select class="form-control" id="select-6" name="state">
+                      <option value="Alabama">Alabama</option>
+                      <option value="New york">New york</option>
+                      <option value="california">california</option>
                     </select>
                   </div>
                   <div class="col-12 col-md-6">
@@ -311,8 +320,8 @@
                     <input
                       class="form-control"
                       type="text"
-                      id="contact-zip"
-                      name="contact-zip"
+                      id="zip"
+                      name="zip"
                       placeholder="2145"
                       required=""
                     />
@@ -323,7 +332,7 @@
                 <div class="row">
                   <div class="col-12 col-md-6">
                     <label class="form-label" for="select-7">Country</label>
-                    <select class="form-control" id="select-7">
+                    <select class="form-control" id="select-7" name="country">
                       <option value="default">United states</option>
                       <option value="AL">England</option>
                       <option value="ger">germany</option>
@@ -364,7 +373,7 @@
               <div>
                 <div class="row">
                   <div class="col-12">
-                    <button class="btn btn--secondary w-100">
+                    <button class="btn btn--secondary w-100" btn-submit type="submit">
                       submit request <i class="energia-arrow-right"></i>
                     </button>
                   </div>
@@ -379,5 +388,58 @@
       </div>
     </div>
   </section>
+    <script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
+
+
+  <script>
+
+var allChecked = $('#customRadioInline1').data('value')
+        if(allChecked.checked) {
+            console.log('dasda');
+        }
+
+
+    function addScript(){
+        $(document).on('submit', 'Form#addForm', function (e) {
+            e.preventDefault();
+            var formData = new FormData(this);
+            var url = $('#addForm').attr('action');
+            $.ajax({
+                url: url,
+                type: 'POST',
+                data: formData,
+                method : 'POST',
+                beforeSend: function () {
+                    $('#addButton').html('<span class="spinner-border spinner-border-sm mr-2" ' +
+                        ' ></span> <span style="margin-left: 4px;">انتظر ..</span>').attr('disabled', true);
+                },
+                success: function (data) {
+                    if (data.status == 200) {
+                        alert('Success')
+                        window.ajax.reload();
+
+                    } else if(data.status == 405){
+                       alert('Error')
+                    }
+                    else
+                        toastr.error('هناك خطأ ما ..');
+                    $('#addButton').html(`اضافة`).attr('disabled', false);
+                    $('#editOrCreate').modal('hide')
+                },
+                // error: function (data) {
+                //             //e ewe
+                //     } else {
+                //         //asaa
+                //     }
+
+                // },//end error method
+
+                cache: false,
+                contentType: false,
+                processData: false
+            });
+        });
+    }
+  </script>
 
 @endsection

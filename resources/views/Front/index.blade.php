@@ -53,6 +53,35 @@
                                     </p>
                                     <div class="slide-action">
                                         <a class="btn btn--primary" href="{{ route('service') }}">
+          <div
+            class="slider-carousel owl-carousel carousel-navs carousel-dots"
+            data-slide="1"
+            data-slide-rs="1"
+            data-autoplay="true"
+            data-nav="true"
+            data-dots="true"
+            data-space="0"
+            data-loop="false"
+            data-speed="800"
+          >
+            {{-- <div class="slide bg-overlay bg-overlay-dark-slider-2">
+              <div class="bg-section">
+                <img src="{{ asset('assets/front') }}/assets/images/sliders/3.jpg" alt="Background" />
+              </div>
+              <div class="container">
+                <div class="row">
+                  <div class="col-12 col-lg-7">
+                    <div class="slide-content">
+                      <h1 class="slide-headline">
+                        sustainable &amp; reliable energy!
+                      </h1>
+                      <p class="slide-desc">
+                        As a world wide distributor of solar supplies we
+                        endeavor provide fast and knowledgeable service, we can
+                        get you materials by sea or air.
+                      </p>
+                      <div class="slide-action">
+                        <a class="btn btn--primary" href="{{ route('service') }}">
                           <span>our services</span
                           ><i class="energia-arrow-right"></i></a
                                         ><a
@@ -66,6 +95,7 @@
                         </div>
                     </div>
                 </div>
+
 
                 <div class="slide bg-overlay bg-overlay-dark-slider-2">
                     <div class="bg-section">
@@ -96,9 +126,43 @@
                                 </div>
                             </div>
                         </div>
+              </div>
+            </div> --}}
+
+            @foreach ($settings as $setting)
+
+            <div class="slide bg-overlay bg-overlay-dark-slider-2">
+              <div class="bg-section">
+                <img src="{{ asset('assets/front') }}/assets/images/sliders/6.jpg" alt="Background" />
+              </div>
+              <div class="container">
+                <div class="row">
+                  <div class="col-12 col-lg-7">
+                    <div class="slide-content">
+                      <h1 class="slide-headline">
+                        {{ $setting->title_en }}
+                      </h1>
+                      <p class="slide-desc">
+                        As a world wide distributor of solar supplies we
+                        endeavor provide fast and knowledgeable service, we can
+                        get you materials by sea or air.
+                      </p>
+                      <div class="slide-action">
+                        <a class="btn btn--primary" href="{{ route('service') }}">
+                          <span>our services</span
+                          ><i class="energia-arrow-right"></i></a
+                        ><a
+                          class="btn btn--white justify-content-center"
+                          href="{{ route('about_us') }}"
+                          >more about us!</a
+                        >
+                      </div>
                     </div>
                 </div>
             </div>
+            @endforeach
+
+          </div>
         </div>
     </section>
 
@@ -328,6 +392,45 @@
                 <div class="video video-2" id="video-2">
                     <div class="bg-section">
                         <img src="{{ asset('assets/front') }}/assets/images/sliders/3.jpg" alt="background"/>
+      <section
+        class="processes processes-1 bg-overlay bg-overlay-theme4"
+        id="processes-1"
+      >
+        <div class="bg-section">
+          <img
+            src="{{ asset('assets/front') }}/assets/images/background/wavy-pattern.png"
+            alt="Background"
+          />
+        </div>
+        <div class="row">
+          <div class="col-12 col-lg-6">
+            <div class="block-right-holder">
+              <div class="heading heading-light heading-light2">
+                <p class="heading-subtitle">how it works!</p>
+                <h2 class="heading-title">
+                  Fueling The Transition To Renewable Power.
+                </h2>
+              </div>
+
+              @foreach ($settings as $setting)
+
+              <div class="counters-holder">
+                <div class="counter counter-3">
+                  <div class="counter-holder">
+                    <div class="counter-num">
+                      <span
+                        class="counting"
+                        data-counterup-nums="25"
+                        data-counterup-beginat="12"
+                        >{{ $setting->year_of_experince }}</span
+                      >
+                    </div>
+                    <div class="counter-img">
+                      <div class="bg-section">
+                        <img src="{{ asset('assets/front') }}/assets/images/counters/1.jpg" alt="image" />
+                      </div>
+                      <i class="flaticon-020-factory"></i>
+
                     </div>
                     <!-- <a
                       class="popup-video btn-video btn-video-2"
@@ -336,6 +439,12 @@
                       <i class="fas fa-play"></i
                     ></a> -->
                 </div>
+
+              </div>
+
+              @endforeach
+
+
             </div>
 
             <div class="about-block-wrapper">

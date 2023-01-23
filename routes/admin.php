@@ -30,6 +30,12 @@ Route::group(['prefix'=>'admin','middleware'=>'auth:admin'],function (){
     #### Product ####
     Route::resource('/product', 'ProductController');
 
+    #### Quote ####
+    Route::resource('/quote', 'QuoteController');
+
+    #### Setting ####
+    Route::resource('/setting', 'SettingController');
+
 
 
 #### Auth ####

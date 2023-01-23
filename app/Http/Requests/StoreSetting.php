@@ -25,25 +25,22 @@ class StoreSetting extends FormRequest
     public function rules()
     {
         return [
-            'about_ar'          => 'required',
-            'about_en'          => 'required',
-            'privacy_ar'        => 'required',
-            'privacy_en'        => 'required',
-            'terms_ar'          => 'required',
-            'terms_en'          => 'required',
-
-        ];
-    }
-
-    public function messages()
-    {
-        return [
-            'about_ar.required'                 => 'يجب ادخال هذا الحقل',
-            'about_en.required'                 => 'يجب ادخال هذا الحقل',
-            'privacy_ar.required'               => 'يجب ادخال هذا الحقل',
-            'privacy_en.required'               => 'يجب ادخال هذا الحقل',
-            'terms_ar.required'                 => 'يجب ادخال هذا الحقل',
-            'terms_en.required'                 => 'يجب ادخال هذا الحقل',
+            'logo' => 'nullable|image',
+            'banner_home' => 'required',
+            'title_ar' => 'required',
+            'title_en' => 'required',
+            'year_of_experince' => 'required',
+            'phone' => 'required',
+            'email' => 'required',
+            'address_ar' => 'required',
+            'address_en' => 'required',
+            'youtube' => 'required',
+            'facebook' => 'required',
+            'twitter' => 'required',
+            'terms_conditions' => 'required',
+            'shipping_policy' => 'required',
+            'returns' => 'required',
+            'work_date' => 'required',
         ];
     }
 }

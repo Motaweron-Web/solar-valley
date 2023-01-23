@@ -44,11 +44,21 @@ Route::group(
     Route::get('/filter', 'ProductController@filter')->name('product-filter');
     Route::get('/categorySort', 'ProductController@categorySort')->name('categorySort');
 
+        #### Request ####
+        Route::get('/request', 'Front\RequestController@index')->name('request');
+        Route::post('/store', 'Front\RequestController@store')->name('store.request');
+
+        #### Product ####
+        Route::get('/products', 'Front\ProductController@index')->name('product');
+
     #### Single ####
     Route::get('/single', 'SingleController@index')->name('single');
     Route::get('/product/{id}', 'SingleController@getProduct')->name('get.product');
 
     #### Faqs ####
     Route::get('/faqs', 'FaqsController@index')->name('faqs');
+
+
+
 
 });

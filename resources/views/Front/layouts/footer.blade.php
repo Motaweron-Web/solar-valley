@@ -60,24 +60,26 @@
             <div class="footer-widget widget-contact">
               <div class="widget-content">
                 <ul>
+
+                    @foreach ($settings as $setting)
+
                   <li class="phone">
-                    +2<a href="tel:+01061245741"> 01061245741</a>
+                    +20<a href="tel:{{ $setting->phone }}">{{ $setting->phone }}</a>
                   </li>
                   <li class="email">
                     Email:
                     <a
-                      href="../cdn-cgi/l/email-protection.html#4f262129200f2a212a3d28262e612c2022"
+                      href="{{ $setting->email }}"
                       ><span
                         class="__cf_email__"
                         data-cfemail="e1888f878ea1848f8493868880cf828e8c"
-                        >[email&#160;protected]</span
+                        >{{ $setting->email }}</span
                       ></a
                     >
                   </li>
                   <li class="address">
                     <p>
-                      2307 Beverley Rd Brooklyn, New York 11226 United
-                      States.
+                     {{ $setting->address_en }}
                     </p>
                   </li>
                   <li class="directions">
@@ -86,6 +88,9 @@
                       directions</a
                     >
                   </li>
+
+                  @endforeach
+
                 </ul>
               </div>
             </div>
@@ -100,6 +105,9 @@
           <div class="col-12">
             <div class="footer-copyright">
               <div class="copyright">
+
+                @foreach ($settings as $setting)
+
                 <span
                   >&copy; 2021 energia by
                   <a href="https://1.envato.market/kP9BV"> Zytheme.com</a>.
@@ -107,21 +115,24 @@
                 </span>
                 <ul class="list-unstyled social-icons">
                   <li>
-                    <a class="share-facebook" href="javascript:void(0)"
+                    <a class="share-facebook" href="{{ $setting->facebook }}"
                       ><i class="energia-facebook"></i>facebook
                     </a>
                   </li>
                   <li>
-                    <a class="share-twitter" href="javascript:void(0)"
+                    <a class="share-twitter" href="{{ $setting->twitter }}"
                       ><i class="energia-twitter"></i>twitter</a
                     >
                   </li>
                   <li>
-                    <a class="share-youtube" href="javascript:void(0)"
+                    <a class="share-youtube" href="{{ $setting->youtube }}"
                       ><i class="energia-youtube"></i>youtube</a
                     >
                   </li>
                 </ul>
+
+                @endforeach
+
               </div>
             </div>
           </div>
